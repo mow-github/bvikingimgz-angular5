@@ -1,0 +1,63 @@
+<app-error></app-error>
+
+<div class="container my-5">
+
+  <div class="container row">
+    <a class="mx-auto my-5" routerLink="/">
+      <img src="/assets/bVikingFullBlack-logo-150x150.png" alt="bvkingimgz_image">
+      <span class="bvkingimgz_image_text">imgz</span>
+    </a>
+  </div>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmitRegisterForm()">
+
+    <div class="form-group row" [ngClass]="(registerForm.controls['email'].errors)?'has-danger':'has-success'">
+      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control form-control-warning" formControlName="email" name="email" id="email">
+        <div class="form-control-feedback" *ngIf="registerForm.controls['email'].errors && !registerForm.controls['email'].pristine">Min 3 characters</div>
+        <div class="form-control-feedback" *ngIf="registerForm.controls['email'].status === 'VALID'">email is ok</div>
+      </div>
+    </div>
+
+    <div class="form-group row" [ngClass]="(registerForm.controls['password'].errors)?'has-danger':'has-success'">
+      <label for="password" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control form-control-warning" formControlName="password" name="password" id="password">
+        <div class="form-control-feedback" *ngIf="registerForm.controls['password'].errors">Min 3 characters</div>
+        <div class="form-control-feedback" *ngIf="registerForm.controls['password'].status === 'VALID'">password is ok</div>
+      </div>
+    </div>
+
+    <div class="form-group row" [ngClass]="(registerForm.controls['name'].errors)?'has-danger':'has-success'">
+      <label for="name" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-warning" formControlName="name" name="name" id="name">
+        <div class="form-control-feedback" *ngIf="registerForm.controls['name'].errors">Min 3 characters</div>
+        <div class="form-control-feedback" *ngIf="registerForm.controls['name'].status === 'VALID'">name is ok</div>
+      </div>
+    </div>
+
+    <div class="form-group row" [ngClass]="(registerForm.controls['role'].errors)?'has-danger':'has-success'">
+      <label for="role" class="col-sm-2 col-form-label">Role</label>
+      <div class="col-sm-10">
+        <select class="form-control form-control-warning" formControlName="role" name="role" id="role">
+          <option>-- Choose a role --</option>
+          <option value="subscriber">Subscriber</option>
+          <option value="admin">Admin</option>
+        </select>
+        <div class="form-control-feedback" *ngIf="registerForm.controls['role'].errors">Min 3 characters</div>
+        <div class="form-control-feedback" *ngIf="registerForm.controls['role'].status === 'VALID'">role is ok</div>
+        <div *ngIf="registerForm.controls['role'].errors">{{ registerForm.controls['role'].errors.backend }}</div>
+      </div>
+    </div>
+
+    <button type="submit" class="form-control" [disabled]="!registerForm.valid">Register</button>
+  </form>
+
+  <div class="row my-5">
+    <button class="btn btn-primary col-6 py-4" (click)="registerOAuth('github')">Register with Github</button>
+    <button class="btn btn-primary col-6 py-4" (click)="registerOAuth('twitter')">Register with Twitter</button>
+  </div>
+
+</div>
