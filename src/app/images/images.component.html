@@ -1,0 +1,40 @@
+
+
+<div class="container">
+
+  <div *ngIf="(usersUid | async)">
+    <span class="fa fa-eye fa-lg ctaBtn" aria-hidden="true"
+          [attr.users_stringified]="users_stringified | async"
+          [attr.images_stringified]="images_stringified | async"
+          (click)="SwitchImageViewEmitFn($event)">
+      Switch image view (all/user)
+    </span>
+    <span class="fa fa-picture-o fa-lg ctaBtnAddImage" aria-hidden="true" (click)="addRandomImageEmitFn()">  Add a picture</span>
+  </div>
+
+  <div class="row" *ngIf="imagesFilteredFlag">
+    <figure class="col-12 col-md-4 my-5 text-center" *ngFor="let image of images | async">
+      <img src={{image.src}} alt="img1">
+      <figcaption class="row my-1">
+        <span class="fa fa-comment-o fa-lg col-4 imageNoHoverBtns" aria-hidden="true"> {{image.comments_tot}}</span>
+        <span class="fa fa-thumbs-o-up fa-lg col-4 imageBtns" aria-hidden="true" (click)="incrementLikeEmitFn(image.imgid)"> {{image.thumbs_up_tot}}</span>
+        <span class="fa fa-thumbs-o-down fa-lg col-4 imageBtns" aria-hidden="true" (click)="decrementLikeEmitFn(image.imgid)"> {{image.thumbs_down_tot}}</span>
+      </figcaption>
+      <button type="button" class="btn col-12 updateImageModalEmitFn" (click)="updateImageModalEmitFn(image)">View img and comments</button>
+      <span class="fa fa-trash-o fa-lg removeImageBtn"
+            [attr.users_stringified]="users_stringified | async"
+            (click)="removeImageEmitFn(image, $event)"
+            *ngIf="(usersUid | async) == image.uid;"
+      ></span>
+    </figure>
+  </div>
+
+  <div class="row" *ngIf="!imagesFilteredFlag">
+    <figure class="col-12 col-md-4 my-5 text-center" *ngFor="let image of imagesFiltered">
+      <img src={{image.src}} alt="img1">
+    </figure>
+  </div>
+
+
+</div>
+

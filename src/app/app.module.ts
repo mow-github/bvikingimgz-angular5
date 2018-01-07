@@ -18,6 +18,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ImagesComponent } from './images/images.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { ErrorComponent } from './error/error.component';
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    ImagesComponent,
     NavbarComponent,
     HeaderComponent,
     ErrorComponent,
