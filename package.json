@@ -1,9 +1,9 @@
 {
   "name": "bvikingimgz-angular5",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "engines": {
-    "node": "8.9.3",
+    "node": "8.9.4",
     "npm": "5.5.1"
   },
   "scripts": {

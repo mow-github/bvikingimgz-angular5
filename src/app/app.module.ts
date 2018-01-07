@@ -19,12 +19,17 @@ import { AppComponent } from './app.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorComponent } from './error/error.component';
+import { RegisterComponent } from './register/register.component';
 import { DefaultComponent } from './default/default.component';
 
 const appRoutes: Routes = [
   {
     path: '',
     component: DefaultComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   },
   {
     path: '**',
@@ -37,6 +42,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     ErrorComponent,
+    RegisterComponent,
     DefaultComponent,
   ],
   imports: [
