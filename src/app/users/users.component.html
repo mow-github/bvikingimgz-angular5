@@ -1,0 +1,11 @@
+<ul class="list-group">
+  <li class="list-group-item justify-content-between"
+      *ngFor="let user of usersall | async"
+  >{{user.email}}
+    <span *ngIf="user.email != (current_user_email | async)">
+      <span class="badge badge-default badge-pill">{{user.role}}</span>
+      <span class="fa fa-pencil-square-o editUserBtn" title="Update the user role" (click)="updateUserRoleFn(user)"></span>
+    </span>
+  </li>
+</ul>
+

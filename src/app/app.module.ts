@@ -19,9 +19,11 @@ import { AppComponent } from './app.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HeaderComponent } from './header/header.component';
 import { ErrorComponent } from './error/error.component';
 import { RegisterComponent } from './register/register.component';
 import { DefaultComponent } from './default/default.component';
+import { UsersComponent } from './users/users.component';
 
 const appRoutes: Routes = [
   {
@@ -43,9 +45,11 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     NavbarComponent,
+    HeaderComponent,
     ErrorComponent,
     RegisterComponent,
     DefaultComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
