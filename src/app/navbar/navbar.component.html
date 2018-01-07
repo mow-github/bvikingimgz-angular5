@@ -1,0 +1,31 @@
+<div class="container">
+  <nav class="navbar navbar-expand-md navbar-light">
+    <a class="navbar-brand" routerLink="/">
+      <img src="/assets/bVikingFullBlack-logo-150x150.png" alt="bvkingimgz_image" width="64">
+      <span class="bvkingimgz_image_text_small">imgz</span>
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarHeader">
+      <div class="navbar-nav mr-auto">
+
+        <a class="nav-item nav-link ml-5" routerLink="/">Bvikingimgz</a>
+
+        <form class="form-inline hidden-sm-down">
+          <input type="text" class="form-control searchInput" placeholder="Filter imgz" title="not active yet" disabled>
+          <div class="searchBnContainer">
+            <span class="fa fa-search searchBnChild"></span>
+          </div>
+        </form>
+
+      </div>
+      <div class="navbar-nav ml-auto">
+        <button class="btn btn-danger" (click)="signOutEmitFn()" *ngIf="usersEmail | async; else loading">signOut {{usersEmail | async}}</button>
+        <ng-template #loading>
+          <a class="nav-item nav-link ml-5" routerLink="/register">Register</a>
+          <button type="button" class="btn btn-primary" (click)="showModalLoginEmitFn()">login modal</button>
+        </ng-template>
+      </div>
+    </div>
+
+  </nav>
+</div>
