@@ -1,6 +1,14 @@
 <app-navbar (showModalLoginEmit)="open(content)" (signOutEmit)="signOut()"></app-navbar>
 <app-error></app-error>
+<app-header></app-header>
 
+<span class="fa fa-user-circle-o fa-lg ctaBtn" aria-hidden="true"
+      (click)="toggleUserFn()"
+      *ngIf="(users_role | async) == 'admin' "
+>Toggle Admin / Images area
+</span>
+
+<app-users *ngIf="toggleUser"></app-users>
 
 
 

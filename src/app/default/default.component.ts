@@ -170,6 +170,11 @@ export class DefaultComponent implements OnInit {
     this.afAuth.auth.signOut();
   }
 
+  toggleUserFn(){
+    this.toggleUser = !this.toggleUser;
+  }
+
+  // test btn with redux counter
   incrementCounter(){
     this.ngRedux.dispatch<any>(action.testCounter(1 ));
   }
