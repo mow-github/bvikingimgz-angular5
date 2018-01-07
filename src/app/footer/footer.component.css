@@ -1,0 +1,20 @@
+.footerContainer{
+  position: fixed;
+  bottom:0;
+  width: 100%;
+  padding: 1rem;
+  font-size: small;
+}
+.footerSubContainer{
+  text-align: center;
+}
+.footerCopyright{
+}
+.footerTerminateAccount{
+  opacity: 0.5;
+}
+.footerTerminateAccount:hover{
+  opacity: 1;
+  cursor: pointer;
+  color:red;
+}

@@ -18,7 +18,7 @@
   (decrementLikeEmit)="decrementLike($event)"
   (updateImageModalEmit)="updateImageModal(content_image, $event)"
 ></app-images>
-
+<app-footer (removeLoggedinUserFBEmit)="removeLoggedinUserFB()"></app-footer>
 
 <ng-template #content_image let-c="close" let-d="dismiss">
   <div class="modal-header">

@@ -22,6 +22,7 @@ import { ImagesComponent } from './images/images.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { ErrorComponent } from './error/error.component';
+import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
 import { DefaultComponent } from './default/default.component';
 import { UsersComponent } from './users/users.component';
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
     NavbarComponent,
     HeaderComponent,
     ErrorComponent,
+    FooterComponent,
     RegisterComponent,
     DefaultComponent,
     UsersComponent,

@@ -23,8 +23,6 @@ import "rxjs/add/operator/pairwise";
   encapsulation: ViewEncapsulation.None,
 })
 export class DefaultComponent implements OnInit {
-  @select(state => state.counters.comments) counters: Observable<any>;
-
   @select(state => state.users) users: Observable<any>;
   @select() images: Observable<any>;
   @select(state => state.users.role ) users_role: Observable<string>;
@@ -113,6 +111,7 @@ export class DefaultComponent implements OnInit {
     this.ngRedux.dispatch<any>(action.removeCommentsListener());
 
   }
+
 
   updateImageModal(content_image, image) {
     this.imageModalForm.patchValue({
@@ -212,6 +211,10 @@ export class DefaultComponent implements OnInit {
     this.afAuth.auth.signOut();
   }
 
+  removeLoggedinUserFB() {
+    this.ngRedux.dispatch<any>(action.removeLoggedinUserFB());
+  }
+
   addRandomImage(){
 
     const randomNr   = Math.floor(Math.random()*1000),
@@ -243,13 +246,6 @@ export class DefaultComponent implements OnInit {
     this.toggleUser = !this.toggleUser;
   }
 
-  // test btn with redux counter
-  incrementCounter(){
-    this.ngRedux.dispatch<any>(action.testCounter(1 ));
-  }
-
 
 
 }
-
-

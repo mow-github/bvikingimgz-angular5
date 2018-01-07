@@ -1,0 +1,7 @@
+<div class="footerContainer">
+  <div class="footerSubContainer">
+    <span class="footerCopyright">&copy; Copyright {{currentDate.toDateString()}}, Bvikingimgz</span>
+    <span class="footerTerminateAccount" (click)="removeLoggedinUserFBEmitFn()" *ngIf="usersEmail | async;"> Terminate account ? - {{usersEmail | async}}</span>
+  </div>
+</div>
+
