@@ -42,7 +42,7 @@
 3. Modify the package.json:
 
       "engines": {
-        "node": "8.9.3",
+        "node": "8.9.4",
         "npm": "5.5.1"
       },
       "scripts": {
@@ -52,13 +52,15 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "postinstall": "ng build --aot -prod", // build for prod.
-        "start": "node server.js"              // run when we push to heroku
+        "postinstall": "ng build --prod --aot=false", // build for prod.
+        "start": "node server.js"                     // run when we push to heroku
       },
       "dependencies": {
-        "@angular/cli": "1.3.2",              // moved from dev-depend...
-        "express": "^4.16.2",                 // added so we can serve the files
-        "@angular/compiler-cli": "^4.2.4"     // moved from dev-depend...
+        "@angular/cli": "1.6.3",                      // moved from dev-depend...
+        "express": "^4.16.2",                         // added so we can serve the files
+        "@angular/compiler": "^5.0.0",                // moved from dev-depend...
+        "@angular/compiler-cli": "^5.0.0"             // moved from dev-depend...
+        "bootstrap": "4.0.0-beta.2",                  // bootstrap may give error, use this version atm
       },
       
 4. Add a server.js that serves the heroku content
