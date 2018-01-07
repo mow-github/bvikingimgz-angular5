@@ -1,0 +1,7 @@
+.postACommentBtn:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
+.ShowAllCommentsBtn:hover{
+  cursor: pointer;
+}
