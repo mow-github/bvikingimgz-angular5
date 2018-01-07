@@ -10,7 +10,58 @@
 
 <app-users *ngIf="toggleUser"></app-users>
 
+<app-images
+  *ngIf="!toggleUser"
+  (addRandomImageEmit)="addRandomImage()"
+  (removeImageEmit)="removeImage($event)"
+  (incrementLikeEmit)="incrementLike($event)"
+  (decrementLikeEmit)="decrementLike($event)"
+  (updateImageModalEmit)="updateImageModal(content_image, $event)"
+></app-images>
 
+
+<ng-template #content_image let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h5 class="modal-title">{{updateImageModalObj.title}}</h5>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <img src={{updateImageModalObj.src}} alt="" />
+  </div>
+  <div class="modal-footer">
+    <div class="row text-center">
+      <span class="fa fa-comment-o fa-lg col-4" aria-hidden="true">{{updateImageModalObj.comments_tot}}</span>
+      <span class="fa fa-thumbs-o-up fa-lg col-4" aria-hidden="true">{{updateImageModalObj.thumbs_up_tot}}</span>
+      <span class="fa fa-thumbs-o-down fa-lg col-4" aria-hidden="true">{{updateImageModalObj.thumbs_down_tot}}</span>
+    </div>
+    <form class="row my-4 mx-4" [formGroup]="imageModalForm" (ngSubmit)="onSubmitImageModalForm()">
+      <input type="text" class="form-control col-12" placeholder="please, leave a comment" formControlName="text" />
+      <button type="submit" class="form-control postACommentBtn" [disabled]="!imageModalForm.valid">Post a comment</button>
+    </form>
+    <button class="btn btn-primary col-12 ShowAllCommentsBtn" (click)="getComments(updateImageModalObj.imgid)">Show all comments</button>
+    <div class="col-12 my-4 commentParent">
+      <p *ngFor="let comment of comments | async">
+        <span class="commentTimestamp">{{comment.timestampRaw}}</span>
+        <span class="commentAuthor">{{comment.email}}</span>
+        <span class="commentText">{{comment.text}}</span>
+
+        <input type="text" class="form-control updateCommentInput" placeholder="please, update your comment here"
+               *ngIf="toggleUpdateInputFlag"
+               value={{comment.text}}
+               [attr.users_stringified]="users_stringified | async"
+               (keyup.enter)="updateComment(comment, $event)"
+        >
+
+        <span class="fa fa-times removeCommentBtn" aria-hidden="true" title="Remove comment"
+              [attr.users_stringified]="users_stringified | async"
+              (click)="removeComment(comment, $event)"></span>
+        <span class="fa fa-refresh removeCommentBtn" aria-hidden="true" title="Update comment" (click)="toggleUpdateInput()"></span>
+      </p>
+    </div>
+  </div>
+</ng-template>
 
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">

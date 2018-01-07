@@ -114,6 +114,19 @@ export class DefaultComponent implements OnInit {
 
   }
 
+  updateImageModal(content_image, image) {
+    this.imageModalForm.patchValue({
+      imgid: image.imgid,
+    });
+    this.updateImageModalObj = image;
+
+    this.modalServiceImage.open(content_image).result.then((result) => {
+      this.closeResultImage = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResultImage = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
   open(content) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -134,6 +147,35 @@ export class DefaultComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+  onSubmitImageModalForm() {
+    const { text, imgid } = this.imageModalForm.value;
+    const timestampRaw = Date.now();
+    const commentObj = { timestampRaw, text, imgid };
+    this.ngRedux.dispatch<any>(action.postComment(commentObj));
+  }
+
+  getComments(imgid){
+    this.ngRedux.dispatch<any>(action.getComments(imgid));
+  }
+
+  removeComment(comment, event){
+    const users = JSON.parse(event.target.attributes['users_stringified'].value);
+    this.ngRedux.dispatch<any>(action.removeComment(comment, users.role));
+  }
+
+  toggleUpdateInputFlag = false;
+  toggleUpdateInput(){
+    this.toggleUpdateInputFlag = !this.toggleUpdateInputFlag;
+  }
+
+  updateComment(comment, event){
+    comment.text = event.target.value;
+    const users = JSON.parse(event.target.attributes['users_stringified'].value);
+    this.ngRedux.dispatch<any>(action.updateComment(comment, users.role));
+
+    console.log("----- updateComment", users.role, comment);
   }
 
   onSubmitLoginForm() {
@@ -168,6 +210,33 @@ export class DefaultComponent implements OnInit {
 
   signOut(){
     this.afAuth.auth.signOut();
+  }
+
+  addRandomImage(){
+
+    const randomNr   = Math.floor(Math.random()*1000),
+      src             = `https://picsum.photos/200/200?random=${randomNr}`,
+      title           = faker.lorem.words(),
+      alt             = `img${randomNr}`,
+      thumbs_up_tot   = 0,
+      thumbs_down_tot = 0,
+      comments_tot    = 0;
+
+    const imageObj = { src, alt, title, thumbs_up_tot, thumbs_down_tot, comments_tot, };
+    this.ngRedux.dispatch<any>(action.postImages(imageObj));
+
+  }
+
+  removeImage(image){
+    this.ngRedux.dispatch<any>(action.removeImage(image, image.current_user_role));
+  }
+
+  incrementLike(imgid){
+    this.ngRedux.dispatch<any>(action.postVote({imgid, value: 1} ));
+  }
+
+  decrementLike(imgid){
+    this.ngRedux.dispatch<any>(action.postVote({imgid, value: -1} ));
   }
 
   toggleUserFn(){
