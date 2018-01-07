@@ -1,1 +1,155 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~font-awesome/css/font-awesome.min.css';
+
+/* style font awsome css start */
+/*.badge-default {
+  background-color: #636c72;
+}
+.badge {
+  color: #fff;
+}*/
+/* style font awsome css end */
+
+body{
+  overflow-y: scroll !important;
+}
+
+.modal-footer{
+  display: block;
+}
+
+
+/* style bvikingimgz text */
+a:hover{
+  text-decoration: none;
+}
+.bvkingimgz_image_text{
+  color: black;
+  position: relative;
+  left: -3rem;
+  font-family: "Arial";
+  font-size: larger;
+}
+.bvkingimgz_image_text_small{
+  color: black;
+  position: relative;
+  left: -1.5rem;
+  font-family: "Arial";
+  font-size: 0.5rem;
+}
+
+.imageBtns, .imageNoHoverBtns{
+  opacity: 0.5;
+  padding: 0.7rem;
+  border-radius: 1rem;
+}
+.imageBtns:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+
+.commentParent{
+  /*background-color: red;*/
+  height: 10rem;
+  overflow-y: scroll;
+  font-size: small;
+
+}
+
+.commentTimestamp::after{
+  content: " - ";
+}
+.commentAuthor{
+  font-weight: bold;
+}
+.commentAuthor::after{
+  content: ": ";
+}
+
+.commentText{
+  font-style: italic;
+  display: block;
+}
+.removeImageBtn{
+  position: absolute;
+}
+.removeCommentBtn,
+.removeImageBtn{
+  opacity: 0.5;
+  top:0;
+  right: 2rem;
+}
+.removeCommentBtn:hover,
+.removeImageBtn:hover{
+  opacity: 1;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.updateCommentInput{
+  text-decoration: underline;
+  font-size: inherit;
+  border: none;
+}
+
+/* change display none to inherit.. so we can toggle modal with react state  */
+.modal{
+  display: block;
+}
+
+.randomImageBtn:hover,
+.toggleBtn:hover{
+  cursor: pointer;
+}
+
+.editUserBtn:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ctaBtn{
+  padding: 0.5rem;
+  cursor: pointer;
+  opacity: 0.5;
+  display: block;
+}
+.ctaBtnAddImage{
+  padding: 0.5rem;
+  cursor: pointer;
+  display: block;
+}
+.ctaBtn:hover{
+  text-decoration: underline;
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
