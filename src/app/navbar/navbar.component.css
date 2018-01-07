@@ -1,0 +1,13 @@
+.searchBnContainer{
+  position: relative;
+}
+.searchBnChild{
+  position: absolute;
+  right: 1rem;
+  top: -8px;
+}
+.searchInput{
+  background-color: transparent !important;
+  font-style: italic;
+  /*pointer-events:none;*/
+}

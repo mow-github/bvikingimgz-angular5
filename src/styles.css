@@ -13,6 +13,10 @@
 }*/
 /* style font awsome css end */
 
+.navbar{
+  flex-direction: row;
+}
+
 body{
   overflow-y: scroll !important;
 }
